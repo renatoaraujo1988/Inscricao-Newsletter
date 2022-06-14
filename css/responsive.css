@@ -26,26 +26,50 @@
 
 @media (max-width: 1000px) {
     .container {
+
         padding: 0px 20px;
     }
 }
 @media (max-width: 630px) {
-    nav {
-        display: none;
+    .menu-button-container {
+        display: flex;
+    }
+
+    .menu {
+        position: absolute; /* nao desce com o scrol */
+        margin-top: 30px; /* estabelece uma margem para que o menu comece abaixo do bota*/
+        flex-direction: column; /* aqui diz que o menu será em coluna e nao em linha*/
+        width: 100vw;
+        justify-content: center; /*alinhamento*/
+        align-items: center; /*alinhamento*/
+        left: 100%; /* o menu vai para a esquerda */
+        transform: translateX(100vw); /*efeito em escala lateral X */
+        transition: 0.5s ease transform; /*transicao suave para não ser feita de uma vex*/
+
+    }
+
+    .menu>li:not(:last-child) {
+        border-bottom: 1px solid white;
+    }
+
+    .menu li a {
+        flex: 1;
+        text-align: center;
+    }
+
+    .menu>li{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0px;
+        width: 100%;
+        color: white;
+        background-color: #0080ed;
+        border-radius: 5px;
+
     }
     main .container-menu img{
         display: none;
-    }
-    .container-menu{
-        height: 100%;
-        display:flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #checkbox-menu {
-        position: absolute;
-        opacity: 0;
     }
 
     label{
@@ -90,3 +114,13 @@
 
   
 }
+
+nav.menu {
+    width: 100%;
+
+}
+
+#checkbox-menu:checked~nav .menu {
+    transform: translateX(-100vw);
+    transition: 0.5s ease transform;
+} 
